@@ -1,8 +1,17 @@
 const actividades=[];
+let idPorTarea =1;
+
 function agregarTarea(){
     const nuevoValor = document.querySelector('#valor').value;
 
-    actividades.push(nuevoValor);
+    const objetoTarea ={
+        idTarea: idPorTarea,
+        tarea: nuevoValor,
+        estados: true,
+    }
+    actividades.push(objetoTarea);
+
+    idPorTarea++;
 
     rendersarDatos();
 }
@@ -15,17 +24,38 @@ function elinarTarea(persona){
     rendersarDatos();
 }
 
-
+function actualizarConfirmado (id){
+    const posicion = actividades.findIndex((obj)=>{
+        if(id === obj.idTarea){
+            return true;
+        }else{
+            return false;
+        }
+    })
+    if(actividades[posicion].confirmado){
+        actividades[posicion].confirmado;
+    }else{
+        !actividades[posicion].confirmado;
+    }
+}
 function rendersarDatos(){
+    if(actividades.estados === true){
+        chekeado = 'checked';
+    }else{
+        chekeado ='none';
+    }
+
+
     let html=``;
-    let id=1;
 
     for (const actividad of actividades) {
         html += `
             <div class="fichatarea">
-                <p>${id++}</p>
-                <p>${actividad}</p>
-                <button class="eliminar" onclick="elinarTarea('${actividad}')">x</button>
+                <p>${actividad.idTarea}</p>
+                <p>${actividad.tarea}</p>
+                <input type="checkbox" onclick="actualizarConfirmado('${actividad.idTarea}')" ${chekeado}/>
+                <button class="eliminar" onclick="elinarTarea('${actividad.idTarea}')">x</button>
+                
             </div>
         `
     }
