@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo list</title>
+    <link rel="stylesheet" href="./assets/css/styless.css"/>
+</head>
+<body>
+    <main>
+        <!-- crearemos div donde colocaremos los inpusts de nuestras tareas-->
+        <div class="ingrasar_tarea">
+            <div class="ficha">
+                <h1>lista de tareas</h1>
+                <hr>
+                <h2>A continuacion completa los espacios para almacenar tu tarea  </h2>
+                <div class="contenido">
+                    <label for="valor">
+                        Nueva tarea
+                        <input type="text" id="valor" placeholder="Nueva tarea"/>
+                    </label>
+                    
+                </div>
+                <button onclick="agregarTarea()">Agregar tarea</button>
+            </div>
+        </div>
+        <!-- crearemos in div donde se mostraran las tareas que incorporamos -->
+         <div class="tareas">
+            
+         </div>
+    </main>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
