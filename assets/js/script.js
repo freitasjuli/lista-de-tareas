@@ -7,7 +7,7 @@ function agregarTarea(){
     const objetoTarea ={
         idTarea: idPorTarea,
         tarea: nuevoValor,
-        estados: true,
+        estados: true
     }
     actividades.push(objetoTarea);
 
@@ -17,7 +17,7 @@ function agregarTarea(){
 }
 
 function elinarTarea(persona){
-    const posicion = actividades.findIndex((elemnto) => elemnto === persona);
+    const posicion = actividades.findIndex((obj) => obj.idTarea === persona);
 
     actividades.splice(posicion,1);
 
@@ -31,18 +31,15 @@ function actualizarConfirmado (id){
         }else{
             return false;
         }
-    })
-    if(actividades[posicion].confirmado){
-        actividades[posicion].confirmado;
-    }else{
-        !actividades[posicion].confirmado;
-    }
+    });
+
+    actividades[posicion].estados = !actividades[posicion].estados;
 }
 function rendersarDatos(){
-    if(actividades.estados === true){
-        chekeado = 'checked';
+    if(actividades.estados){
+        chekeado = '1';
     }else{
-        chekeado ='none';
+        chekeado ='2';
     }
 
 
@@ -53,8 +50,8 @@ function rendersarDatos(){
             <div class="fichatarea">
                 <p>${actividad.idTarea}</p>
                 <p>${actividad.tarea}</p>
-                <input type="checkbox" onclick="actualizarConfirmado('${actividad.idTarea}')" ${chekeado}/>
-                <button class="eliminar" onclick="elinarTarea('${actividad.idTarea}')">x</button>
+                <input type="checkbox" onclick="actualizarConfirmado(${actividad.idTarea})" ${chekeado}/>
+                <button class="eliminar" onclick="elinarTarea(${actividad.idTarea})">x</button>
                 
             </div>
         `
